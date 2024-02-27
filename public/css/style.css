@@ -1,0 +1,175 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden; /* Ngăn chặn scrollbar nếu video vượt quá kích thước viewport */
+}
+h1 {
+    color: #fff;
+    text-shadow: 2px 2px #707070;
+    font-size: 5rem;
+}
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    object-fit: cover;
+    overflow: hidden;
+}
+.container {
+    position: relative;
+    z-index: 100; /* Đảm bảo nội dung nằm trên video */
+    position: relative; /* Đảm bảo container là relative để các absolute elements bên trong nó có thể được vị trí tương đối với nó */
+    width: 100%; /* Đảm bảo container chiếm toàn bộ chiều rộng */
+    min-height: 100vh; /* Đảm bảo container ít nhất bằng chiều cao viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#number_frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 440px;
+    height: 240px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: #7e123a;
+    text-shadow: #7e123a;
+    overflow: hidden;
+}
+#random-number {
+    font-size: 10vw; /* Chữ to hơn, chiếm khoảng 50% chiều cao viewport tùy theo nội dung */
+    color: #ff498b; /* Màu chữ trắng */
+    display: inline-block;
+}
+
+button {
+    position: fixed; /* Cố định nút ở một vị trí */
+    bottom: 60px; /* Cách cạnh dưới 30px */
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 10px 20px;
+    width: 200px;
+    font-size: 2vw;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    background-color: #e63b7a; /* Màu nút không thay đổi */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff498b; /* Màu nút khi hover không thay đổi */
+}
+@keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+        filter: blur(1px);
+    }
+    50% {
+        opacity: 0.1;
+        filter: blur(0.5px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
+.flicker {
+    animation: flickerAnimation 0.2s linear 1;
+}
+@keyframes zoomInZoomOut {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.zoom-in-out {
+    animation: zoomInZoomOut 1s ease-in-out 1;
+}
+
+@keyframes confetti-animation {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(300px) rotate(360deg);
+        opacity: 0;
+    }
+}
+@keyframes confetti-burst {
+    0% {
+        transform: scale(0.5) translate(-50%, -50%);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) translateX(var(--translateX))
+            translateY(var(--translateY)) rotate(720deg); /* Tăng góc xoay */
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: var(--confetti-color);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+.confetti-streamer {
+    position: fixed;
+    width: 2px; /* Mảnh hơn */
+    height: 16px; /* Dài hơn */
+    background-color: var(--confetti-color);
+    opacity: 0;
+    transform-origin: bottom center;
+}
+
+@keyframes streamer-burst {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-800px) rotate(720deg); /* Di chuyển lên và xoay */
+        opacity: 0;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.number-slide {
+    animation-name: slideDown;
+    animation-timing-function: ease-out; /* Đảm bảo animation chậm dần ở cuối */
+    /* Thời gian animation sẽ được đặt trong JavaScript */
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Picker</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="video-background">
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <source src="/image/background_rose.mp4" type="video/mp4">
+        </video>
+    </div>
+    <!-- <h1>Quay số may mắn</h1> -->
+    <div id="confetti-container"></div>
+    <div class="container">
+        <div id="number_frame">
+            <div id="random-number">0000</div>
+        </div>
+        <button id="pick-number">Quay số</button>
+    </div>
+    <audio id="startSound" src="/audio/start-sound-1.mp3"></audio>
+    <audio id="endSound" src="/audio/end-sound.mp3"></audio>
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
